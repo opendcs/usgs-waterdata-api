@@ -17,7 +17,7 @@ import java.util.List;
  * request and cannot fail; this vocabulary is effectively static.
  *
  * <p>To regenerate {@code src/main/resources/site-types.csv}, fetch
- * {@code https://api.waterdata.usgs.gov/ogcapi/v0/collections/site-types/items?f=csv&limit=1000}
+ * {@code https://api.waterdata.usgs.gov/ogcapi/v1/collections/site-types/items?f=csv&limit=1000}
  * and keep only those two columns.
  *
  * <pre>{@code
