@@ -5,7 +5,7 @@ A Java library for retrieving hydrologic data (daily values, peaks, continous (~
 
 ```gradle
 // gradle
-implementation("org.opendcs:usgs-waterdata-api:0.3.*")
+implementation("org.opendcs:usgs-waterdata-api:0.4.*")
 ```
 
 
@@ -216,7 +216,7 @@ The bundled copy lives at `src/main/resources/site-types.csv`. To regenerate it,
 `site_type_name` columns from:
 
 ```
-https://api.waterdata.usgs.gov/ogcapi/v0/collections/site-types/items?f=csv&limit=1000
+https://api.waterdata.usgs.gov/ogcapi/v1/collections/site-types/items?f=csv&limit=1000
 ```
 
 ## API Key
@@ -249,3 +249,12 @@ To save API responses to `~/usgs.waterdata/` for inspection, add the JVM flag:
 ```
 
 Files are named `<collection>_<id>` after the request, e.g. `daily_4993ed5a....csv`, `time-series-metadata_USGS-13037500.csv`, or `ratings_13011000.rdb`. Duplicate filenames get an incrementing suffix (e.g. `daily_....csv`, `daily_...1.csv`).
+
+## Breaking changes
+
+### 0.4.0 - `ogcapi/v0` to `ogcapi/v1`
+
+The v1 `time-series-metadata` collection dropped `hydrologic_unit_code`, `state_name`, `begin_utc`
+and `end_utc`, so `TimeSeriesMetadata` loses `hydrologicUnitCode`, `stateName`, `beginUtc` and
+`endUtc`. The first two are still available per location from
+`UsgsWaterDataApi.getLocations(stateCode, siteTypeCode)`.

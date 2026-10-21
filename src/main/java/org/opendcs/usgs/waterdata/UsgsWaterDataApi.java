@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 /**
  * Client for the USGS Water Data API ({@code api.waterdata.usgs.gov}).
- * <a href="https://api.waterdata.usgs.gov/ogcapi/v0/openapi?f=html#/">OpenAPI Documentation</a>
+ * <a href="https://api.waterdata.usgs.gov/ogcapi/v1/openapi?f=html#/">OpenAPI Documentation</a>
  * 
  * <p>Provides methods to retrieve monitoring locations, daily time-series data,
  * continuous time-series data, and time-series metadata. Responses are cached in 
@@ -36,7 +36,7 @@ public class UsgsWaterDataApi {
     static final int PAGE_LIMIT = 50000;
     static final long MAX_WINDOW_DAYS = 1000;
 
-    static final String ROOT_URL                      = "https://api.waterdata.usgs.gov/ogcapi/v0/collections/";
+    static final String ROOT_URL                      = "https://api.waterdata.usgs.gov/ogcapi/v1/collections/";
     static final String RATINGS_URL                   = "https://api.waterdata.usgs.gov/stac-files/ratings/USGS.%s.exsa.rdb";
     static final String LOCATIONS_URL                 = ROOT_URL + "monitoring-locations/items?f=csv&lang=en-US&limit=50000&offset=0&agency_code=USGS&state_code=%s&site_type_code=%s";
     static final String TIME_SERIES_QUERY_ID          = "items?f=csv&lang=en-US&limit=50000&properties=time,value&skipGeometry=true&sortby=time&offset=0&time_series_id=%s&time=%s/%s";
@@ -45,7 +45,7 @@ public class UsgsWaterDataApi {
     static final String PEAKS_QUERY                    = "peaks/items?f=csv&lang=en-US&limit=50000&properties=value,time,time_of_day,qualifier&skipGeometry=true&sortby=time&offset=0&time_series_id=%s";
     static final String PEAKS_URL                      = ROOT_URL + PEAKS_QUERY;
     static final String PEAKS_URL_RANGE               = ROOT_URL + PEAKS_QUERY + "&time=%s/%s";
-    static final String TIME_SERIES_METADATA_PROPERTIES = "id,unit_of_measure,parameter_name,parameter_code,statistic_id,hydrologic_unit_code,state_name,last_modified,begin,end,begin_utc,end_utc,computation_period_identifier,computation_identifier,thresholds,sublocation_identifier,primary,monitoring_location_id,web_description,parameter_description,parent_time_series_id";
+    static final String TIME_SERIES_METADATA_PROPERTIES = "id,unit_of_measure,parameter_name,parameter_code,statistic_id,last_modified,begin,end,computation_period_identifier,computation_identifier,thresholds,sublocation_identifier,primary,monitoring_location_id,web_description,parameter_description,parent_time_series_id";
     static final String TIME_SERIES_METADATA_URL      = ROOT_URL + "time-series-metadata/items?f=csv&lang=en-US&limit=50000&properties=" + TIME_SERIES_METADATA_PROPERTIES + "&skipGeometry=false&offset=0&monitoring_location_id=%s";
     static final String TIME_SERIES_METADATA_POST_URL = ROOT_URL + "time-series-metadata/items?f=csv&lang=en-US&limit=50000&properties=" + TIME_SERIES_METADATA_PROPERTIES + "&skipGeometry=false&offset=0";
     private static volatile String apiKey;

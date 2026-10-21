@@ -13,13 +13,9 @@ public class TimeSeriesMetadata {
     public String parameterName;
     public String parameterCode;
     public String statisticId;
-    public String hydrologicUnitCode;
-    public String stateName;
     public String lastModified;
     public LocalDate begin;
     public LocalDate end;
-    public String beginUtc;
-    public String endUtc;
     public String computationPeriodIdentifier;
     public String computationIdentifier;
     public String thresholds;
@@ -106,13 +102,9 @@ public class TimeSeriesMetadata {
         ts.parameterName = table.get(row, "parameter_name");
         ts.parameterCode = table.get(row, "parameter_code");
         ts.statisticId = table.get(row, "statistic_id");
-        ts.hydrologicUnitCode = table.get(row, "hydrologic_unit_code");
-        ts.stateName = table.get(row, "state_name");
         ts.lastModified = table.get(row, "last_modified");
         ts.begin = parseDate(table.get(row, "begin"));
         ts.end = parseDate(table.get(row, "end"));
-        ts.beginUtc = table.get(row, "begin_utc");
-        ts.endUtc = table.get(row, "end_utc");
         ts.computationPeriodIdentifier = table.get(row, "computation_period_identifier");
         ts.computationIdentifier = table.get(row, "computation_identifier");
         ts.thresholds = table.get(row, "thresholds");
